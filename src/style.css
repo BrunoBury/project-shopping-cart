@@ -326,6 +326,7 @@
   .cart {
     height: 630px;
   }
+
 }
 .loading {
   position: fixed;
@@ -337,6 +338,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: rgb(0, 0, 0);
+  color: black;
   font-size: 2rem;
 }
