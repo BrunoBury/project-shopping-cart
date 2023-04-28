@@ -2,7 +2,7 @@ import { searchCep } from './helpers/cepFunctions';
 import './style.css';
 import { fetchProductsList } from './helpers/fetchFunctions';
 import { createProductElement } from './helpers/shopFunctions';
-import { showLoading, hideLoading } from './loading';
+import { showLoading, hideLoading, errorLoading } from './loading';
 
 const fetchApi = async () => {
   try {
@@ -13,7 +13,7 @@ const fetchApi = async () => {
       productsEl.appendChild(createProductElement(element));
     });
   } catch (error) {
-    console.error(error);
+    errorLoading('Algum erro ocorreu, recarregue a página e tente novamente');
   } finally {
     hideLoading();
   }

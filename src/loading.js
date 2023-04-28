@@ -12,3 +12,11 @@ export const hideLoading = () => {
     loadings[0].remove();
   }
 };
+export const errorLoading = (message) => {
+  const loadingErrorEl = document.createElement('div');
+  loadingErrorEl.classList.add('error');
+  const loadingErrorLabel = document.createElement('label');
+  loadingErrorEl.innerText = message;
+  loadingErrorEl.appendChild(loadingErrorLabel);
+  document.body.appendChild(loadingErrorEl);
+};
