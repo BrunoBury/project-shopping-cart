@@ -1,8 +1,7 @@
 import './mocks/fetchSimulator';
 import { fetchProductsList } from '../helpers/fetchFunctions';
 import computadorSearch from './mocks/search';
-import fetchSimulator from './mocks/fetchSimulator';
-// jest.mock('node-fetch')
+
 
 // implemente seus testes aqui
 describe('Teste a função fetchProductsList', () => {
