@@ -1,8 +1,9 @@
 import { searchCep } from './helpers/cepFunctions';
 import './style.css';
-import { fetchProductsList } from './helpers/fetchFunctions';
-import { createProductElement } from './helpers/shopFunctions';
+import { fetchProduct, fetchProductsList } from './helpers/fetchFunctions';
+import { createCartProductElement, createProductElement } from './helpers/shopFunctions';
 import { showLoading, hideLoading, errorLoading } from './loading';
+import { getSavedCartIDs } from './helpers/cartFunctions';
 
 const fetchApiList = async () => {
   try {
@@ -12,15 +13,18 @@ const fetchApiList = async () => {
     productsApi.forEach((element) => {
       productsEl.appendChild(createProductElement(element));
     });
+    const savedLoc = getSavedCartIDs();
+    const getOl = document.querySelector('.cart__products');
+    const productStorage = await Promise.all(savedLoc.map((id) => fetchProduct(id)));
+    productStorage.forEach((element) => {
+      getOl.appendChild(createCartProductElement(element));
+    });
   } catch (error) {
     errorLoading('Algum erro ocorreu, recarregue a página e tente novamente');
   } finally {
     hideLoading();
   }
 };
-
-// com os dados de fetchProduct, criar o elemento com a função creatCartProductElement
-// adicionar esse element como filho da class = cart__products
 
 document.addEventListener('DOMContentLoaded', fetchApiList());
 document.querySelector('.cep-button').addEventListener('click', searchCep);

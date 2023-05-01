@@ -126,7 +126,6 @@ export const createProductElement = ({ id, title, thumbnail, price }) => {
   cartButton.addEventListener('click', async () => {
     const productId = await fetchProduct(id);
     saveCartID(productId.id);
-    // createCartProductElement(productId);
     const getOl = document.querySelector('.cart__products');
     getOl.appendChild(createCartProductElement(productId));
   });
